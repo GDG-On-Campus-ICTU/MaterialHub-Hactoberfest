@@ -121,7 +121,12 @@ Ensure responsive design
 Follow accessibility best practices
 
 🌟 Featured Contributors
+  <a href="https://github.com/GDG-On-Campus-ICTU/MaterialHub-Hactoberfest/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=GDG-On-Campus-ICTU/MaterialHub-Hactoberfest" />
+</a>
+
  
+
 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 🙏 Acknowledgments
