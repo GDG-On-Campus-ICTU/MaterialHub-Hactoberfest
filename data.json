@@ -8,7 +8,13 @@
      {
         "contributor": "Nde Dilan",
         "resourceName": "Flutter Documentation",
-        "link": "https://flutter.dev/",
+        "link": "https://https://reactnative.dev//",
         "tags": ["Flutter", "android", "framework"]
+    },
+      {
+        "contributor": "Guegouo M. Guiddel",
+        "resourceName": "React Native ",
+        "link": "https://flutter.dev/",
+        "tags": ["React native ", "mobile development", "cross platform"]
     }
 ]
