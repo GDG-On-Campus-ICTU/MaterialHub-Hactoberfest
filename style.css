@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f3ec78, #af4261);
+    background: linear-gradient(135deg, #8b8b84, #af4261);
     color: #333;
     display: flex;
     justify-content: center;
@@ -24,6 +24,7 @@ body.dark-mode {
     width: 100%;
     padding: 20px;
     margin: 0 auto;
+    background-color: rgba(80, 75, 75, 0.594);
 }
 
 h1,
@@ -156,7 +157,7 @@ button:hover {
 }
 
 .material-card {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgb(100, 87, 87);
     padding: 20px;
     border-radius: 15px;
     margin-bottom: 20px;
@@ -190,10 +191,11 @@ button:hover {
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 15px;
+    
 }
 
 .tag {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgb(0, 0, 0);
     color: #fff;
     padding: 5px 10px;
     border-radius: 50px;
