@@ -6,6 +6,12 @@
         "tags": ["Hacking", "Internet", "Story","History"]
     },
     {
+        "contributor": "Nde Dilan",
+        "resourceName": "AWS Certified Cloud Practitioner Certification Course (CLF-C02) - Pass the Exam!",
+        "link": "https://www.youtube.com/watch?v=NhDYbskXRgc",
+        "tags": ["AWS", "Internet", "Cloud","DevOps"]
+    },
+    {
         "contributor": "Madick Ange",
         "resourceName": "React Documentation",
         "link": "https://reactjs.org",
