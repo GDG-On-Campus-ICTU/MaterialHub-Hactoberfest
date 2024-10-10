@@ -1,5 +1,11 @@
 [
     {
+        "contributor": "Nde Dilan",
+        "resourceName": "How a Hacker Saved The Internet",
+        "link": "https://www.youtube.com/watch?v=F7iLfuci75Y",
+        "tags": ["Hacking", "Internet", "Story","History"]
+    },
+    {
         "contributor": "Madick Ange",
         "resourceName": "React Documentation",
         "link": "https://reactjs.org",
@@ -8,13 +14,13 @@
      {
         "contributor": "Nde Dilan",
         "resourceName": "Flutter Documentation",
-        "link": "https://https://reactnative.dev//",
+        "link": "https://flutter.dev/",
         "tags": ["Flutter", "android", "framework"]
     },
       {
         "contributor": "Guegouo M. Guiddel",
         "resourceName": "React Native ",
-        "link": "https://flutter.dev/",
+        "link": "https://https://reactnative.dev/",
         "tags": ["React native ", "mobile development", "cross platform"]
     }
 ]
