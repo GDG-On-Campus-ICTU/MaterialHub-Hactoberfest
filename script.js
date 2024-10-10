@@ -1,6 +1,7 @@
 class TechMaterialsApp {
     constructor() {
         this.materials = [];
+        this.isDarkMode = false;
         this.init();
     }
 
@@ -9,6 +10,7 @@ class TechMaterialsApp {
             await this.loadMaterials();
             this.setupEventListeners();
             this.renderMaterials();
+            this.updateTheme(); 
         } catch (error) {
             this.showError('Failed to initialize the application');
         }
@@ -22,6 +24,7 @@ class TechMaterialsApp {
 
             console.log(this.materials);
         } catch (error) {
+            console.error('Error loading materials:', error);
             throw new Error('Error loading materials: ' + error.message);
         }
     }
@@ -37,6 +40,12 @@ class TechMaterialsApp {
         document.getElementById('searchInput').addEventListener('input', (e) => {
             this.handleSearch(e.target.value);
         });
+
+        // Theme toggle button
+        const toggleButton = document.getElementById('toggleTheme');
+            toggleButton.addEventListener('click', () => {
+                this.toggleTheme();
+            });
     }
 
     handleFormSubmission() {
@@ -111,6 +120,32 @@ class TechMaterialsApp {
     showError(message) {
         console.error(message);
         // You could implement a more user-friendly error display here
+    }
+
+    toggleTheme() {
+        this.isDarkMode = !this.isDarkMode;
+        this.updateTheme();
+    }
+
+    updateTheme() {
+        const body = document.body;
+        const addMaterialSection = document.querySelector('.add-material');
+        const materialCards = document.querySelectorAll('.material-card');
+        const header = document.querySelector('h1'); // Select the header
+        const labels = document.querySelectorAll('label'); // Select all labelsed
+        if (this.isDarkMode) {
+            body.classList.add('dark-mode');
+            addMaterialSection.classList.add('dark-mode');
+            materialCards.forEach(card => card.classList.add('dark-mode'));
+            header.classList.add('dark-mode'); // Add dark-mode class to header
+            labels.forEach(label => label.classList.add('dark-mode')); // Add dark-mode class to all labels
+        } else {
+            body.classList.remove('dark-mode');
+            addMaterialSection.classList.remove('dark-mode');
+            materialCards.forEach(card => card.classList.remove('dark-mode'));
+            header.classList.remove('dark-mode'); // Remove dark-mode class from header
+            labels.forEach(label => label.classList.remove('dark-mode')); // Remove dark-mode class from all labels
+        }
     }
 }
 
