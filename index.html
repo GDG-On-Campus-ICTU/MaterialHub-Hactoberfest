@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Materials Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tech Materials Library</h1>
+        </header>
+
+        <section class="add-material">
+            <h2>Add New Material</h2>
+            <form id="materialForm">
+                <div class="form-group">
+                    <label for="contributor">Contributor Name:</label>
+                    <input type="text" id="contributor" required>
+                </div>
+                <div class="form-group">
+                    <label for="resourceName">Resource Name:</label>
+                    <input type="text" id="resourceName" required>
+                </div>
+                <div class="form-group">
+                    <label for="link">Resource Link:</label>
+                    <input type="url" id="link" required>
+                </div>
+                <div class="form-group">
+                    <label for="tags">Tags (comma-separated):</label>
+                    <input type="text" id="tags" placeholder="web dev, html, react">
+                </div>
+                <button type="submit">Add Material</button>
+            </form>
+        </section>
+
+        <section class="materials-list">
+            <h2>Available Materials</h2>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search materials...">
+            </div>
+            <div id="materialsList"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
