@@ -25,7 +25,7 @@ class TechMaterialsApp {
             console.log(this.materials);
         } catch (error) {
             console.error('Error loading materials:', error);
-            // throw new Error('Error loading materials: ' + error.message);
+            throw new Error('Error loading materials: ' + error.message);
         }
     }
 
@@ -43,7 +43,6 @@ class TechMaterialsApp {
 
         // Theme toggle button
         const toggleButton = document.getElementById('toggleTheme');
-            console.log('Toggle Button:', toggleButton); // Check if button is selected
             toggleButton.addEventListener('click', () => {
                 this.toggleTheme();
             });
@@ -129,17 +128,11 @@ class TechMaterialsApp {
     }
 
     updateTheme() {
-        console.log('Updating theme...'); // Debugging line
         const body = document.body;
         const addMaterialSection = document.querySelector('.add-material');
         const materialCards = document.querySelectorAll('.material-card');
         const header = document.querySelector('h1'); // Select the header
-        const labels = document.querySelectorAll('label'); // Select all labels
-    
-        console.log('Body:', body); // Check if body is selected
-        console.log('Add Material Section:', addMaterialSection); // Check if add-material section is selected
-        console.log('Material Cards:', materialCards); // Check if material cards are selected
-    
+        const labels = document.querySelectorAll('label'); // Select all labelsed
         if (this.isDarkMode) {
             body.classList.add('dark-mode');
             addMaterialSection.classList.add('dark-mode');
