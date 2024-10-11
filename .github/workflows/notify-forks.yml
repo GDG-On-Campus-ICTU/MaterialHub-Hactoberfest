@@ -1,0 +1,17 @@
+name: Notify Forks
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.PAT_FOR_DISPATCH }}
+          repository: Nde-Dilan/MaterialHub-Hactoberfest
+          event-type: sync-fork
