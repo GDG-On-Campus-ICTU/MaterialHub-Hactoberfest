@@ -1,3 +1,82 @@
+:root {
+    --primary-font: 'Poppins', sans-serif;
+    --primary-bg-gradient: linear-gradient(135deg, #f3ec78, #af4261);
+    --primary-bg-color: #333;
+    --primary-color: #333;
+    --secondary-color: #f5f5f5;
+    --container-max-width: 1100px;
+    --container-padding: 20px;
+    --heading-color: #fff;
+    --heading-font-weight: 700;
+    --h1-font-size: 3rem;
+    --h1-margin-bottom: 30px;
+    --h2-font-size: 2rem;
+    --h2-margin-bottom: 20px;
+    --add-material-bg: rgba(255, 255, 255, 0.1);
+    --add-material-blur: blur(8px);
+    --add-material-border-radius: 20px;
+    --add-material-padding: 30px;
+    --add-material-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --add-material-margin-bottom: 40px;
+    --transition: all 0.3s ease-in-out;
+    --input-padding: 12px;
+    --input-font-size: 1rem;
+    --input-margin-bottom: 20px;
+    --input-border-radius: 10px;
+    --input-bg: rgba(255, 255, 255, 0.15);
+    --input-focus-bg: rgba(255, 255, 255, 0.25);
+    --button-padding: 15px;
+    --button-border-radius: 50px;
+    --button-font-size: 1.2rem;
+    --button-font-weight: 600;
+    --button-bg-gradient: linear-gradient(45deg, #FF6B6B, #F0E68C);
+    --button-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    --button-hover-transform: translateY(-5px);
+    --button-hover-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    --materials-list-bg: rgba(255, 255, 255, 0.1);
+    --materials-list-blur: blur(8px);
+    --materials-list-border-radius: 20px;
+    --materials-list-padding: 30px;
+    --materials-list-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --search-bar-margin-bottom: 20px;
+    --material-card-bg: rgba(255, 255, 255, 0.15);
+    --material-card-padding: 20px;
+    --material-card-border-radius: 15px;
+    --material-card-margin-bottom: 20px;
+    --material-card-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    --material-card-color: #fff;
+    --material-card-h3-margin-bottom: 10px;
+    --material-card-h3-font-size: 1.5rem;
+    --material-card-p-font-size: 1rem;
+    --material-card-p-color: rgba(255, 255, 255, 0.9);
+    --tag-bg: rgba(255, 255, 255, 0.2);
+    --tag-color: #fff;
+    --tag-padding: 5px 10px;
+    --tag-border-radius: 50px;
+    --tag-font-size: 0.9rem;
+    --tag-font-weight: 500;
+    --tag-hover-bg: rgba(255, 255, 255, 0.4);
+    --media-max-width-1200-padding: 15px;
+    --media-max-width-768-h1-font-size: 2.5rem;
+    --media-max-width-768-h2-font-size: 1.8rem;
+    --media-max-width-768-button-font-size: 1.1rem;
+    --media-max-width-768-input-padding: 10px;
+    --media-max-width-768-input-font-size: 0.95rem;
+    --media-max-width-768-material-card-h3-font-size: 1.3rem;
+    --media-max-width-480-h1-font-size: 2rem;
+    --media-max-width-480-h2-font-size: 1.5rem;
+    --media-max-width-480-padding: 15px;
+    --media-max-width-480-button-padding: 12px;
+    --media-max-width-480-input-padding: 8px;
+    --media-max-width-480-input-font-size: 0.85rem;
+    --media-max-width-480-material-card-h3-font-size: 1.2rem;
+    --media-max-width-480-material-card-p-font-size: 0.9rem;
+    --button-container-margin-bottom: 20px;
+    --button-container-padding-top: 20px;
+    --toggle-theme-width: 50%;
+    --toggle-theme-bg-hover: #45a049;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,9 +84,9 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f3ec78, #af4261);
-    color: #333;
+    font-family: var(--primary-font);
+    background: var(--primary-bg-gradient);
+    color: var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,51 +94,51 @@ body {
 }
 
 body.dark-mode {
-    background: #333;
-    color: #f5f5f5;
+    background: var(--primary-bg-color);
+    color: var(--secondary-color);
 }
 
 .container {
-    max-width: 1100px;
+    max-width: var(--container-max-width);
     width: 100%;
-    padding: 20px;
+    padding: var(--container-padding);
     margin: 0 auto;
 }
 
 h1,
 h2 {
-    font-weight: 700;
-    color: #fff;
+    font-weight: var(--heading-font-weight);
+    color: var(--heading-color);
     text-align: center;
 }
 
 h1 {
-    font-size: 3rem;
-    margin-bottom: 30px;
+    font-size: var(--h1-font-size);
+    margin-bottom: var(--h1-margin-bottom);
 }
 
 h1.dark-mode {
-    color: #f5f5f5;
+    color: var(--secondary-color);
 }
 
 h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: var(--h2-font-size);
+    margin-bottom: var(--h2-margin-bottom);
 }
 
 .add-material {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    margin-bottom: 40px;
-    transition: all 0.3s ease-in-out;
+    background-color: var(--add-material-bg);
+    backdrop-filter: var(--add-material-blur);
+    border-radius: var(--add-material-border-radius);
+    padding: var(--add-material-padding);
+    box-shadow: var(--add-material-box-shadow);
+    margin-bottom: var(--add-material-margin-bottom);
+    transition: var(--transition);
 }
 
 .add-material.dark-mode {
-    background-color: #444;
-    color: #f5f5f5;
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-color);
 }
 
 .add-material:hover {
@@ -67,122 +146,122 @@ h2 {
 }
 
 label {
-    color: #fff;
+    color: var(--heading-color);
     font-size: 1.1rem;
     margin-bottom: 8px;
     display: block;
 }
 
 label.dark-mode {
-    color: #f5f5f5;
+    color: var(--secondary-color);
 }
 
 input[type="text"],
 input[type="url"] {
     width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    border-radius: 10px;
+    padding: var(--input-padding);
+    font-size: var(--input-font-size);
+    margin-bottom: var(--input-margin-bottom);
+    border-radius: var(--input-border-radius);
     border: none;
-    background-color: rgba(255, 255, 255, 0.15);
-    color: #fff;
+    background-color: var(--input-bg);
+    color: var(--heading-color);
     outline: none;
     transition: background-color 0.3s;
 }
 
 input[type="text"]:focus,
 input[type="url"]:focus {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: var(--input-focus-bg);
 }
 
 .add {
     display: block;
     width: 100%;
-    padding: 15px;
+    padding: var(--button-padding);
     border: none;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #fff;
-    background-image: linear-gradient(45deg, #FF6B6B, #F0E68C);
+    border-radius: var(--button-border-radius);
+    font-size: var(--button-font-size);
+    font-weight: var(--button-font-weight);
+    color: var(--heading-color);
+    background-image: var(--button-bg-gradient);
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+    box-shadow: var(--button-box-shadow);
 }
 
 button.dark-mode {
-    background-color: #666;
-    color: #f5f5f5;
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-color);
 }
 
 button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    transform: var(--button-hover-transform);
+    box-shadow: var(--button-hover-box-shadow);
 }
 
 .materials-list {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease-in-out;
+    background-color: var(--materials-list-bg);
+    backdrop-filter: var(--materials-list-blur);
+    border-radius: var(--materials-list-border-radius);
+    padding: var(--materials-list-padding);
+    box-shadow: var(--materials-list-box-shadow);
+    transition: var(--transition);
 }
 
 .materials-list.dark-mode {
-    background-color: #444;
-    color: #f5f5f5;
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-color);
 }
 
 .search-bar {
-    margin-bottom: 20px;
+    margin-bottom: var(--search-bar-margin-bottom);
 }
 
 .search-bar input[type="text"] {
     width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border-radius: 10px;
+    padding: var(--input-padding);
+    font-size: var(--input-font-size);
+    border-radius: var(--input-border-radius);
     border: none;
-    background-color: rgba(255, 255, 255, 0.15);
-    color: #fff;
+    background-color: var(--input-bg);
+    color: var(--heading-color);
     transition: background-color 0.3s;
 }
 
 .search-bar input[type="text"]:focus {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: var(--input-focus-bg);
     outline: none;
 }
 
 .material-card {
-    background-color: rgba(255, 255, 255, 0.15);
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    color: #fff;
+    background-color: var(--material-card-bg);
+    padding: var(--material-card-padding);
+    border-radius: var(--material-card-border-radius);
+    margin-bottom: var(--material-card-margin-bottom);
+    box-shadow: var(--material-card-box-shadow);
+    transition: var(--transition);
+    color: var(--material-card-color);
 }
 
 .material-card.dark-mode {
-    background-color: #555;
-    color: #f5f5f5;
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-color);
 }
 
 .material-card h3 {
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-    color: #fff;
+    margin-bottom: var(--material-card-h3-margin-bottom);
+    font-size: var(--material-card-h3-font-size);
+    color: var(--heading-color);
 }
 
 .material-card p {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--material-card-p-font-size);
+    color: var(--material-card-p-color);
 }
 
 .material-card.dark-mode h3 {
-    color: #f5f5f5;
+    color: var(--secondary-color);
 }
 
 .tags {
@@ -193,122 +272,122 @@ button:hover {
 }
 
 .tag {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    background-color: var(--tag-bg);
+    color: var(--tag-color);
+    padding: var(--tag-padding);
+    border-radius: var(--tag-border-radius);
+    font-size: var(--tag-font-size);
+    font-weight: var(--tag-font-weight);
     transition: background-color 0.3s ease;
 }
 
 .tag.dark-mode {
-    background-color: #666;
-    color: #f5f5f5;
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-color);
 }
 
 .tag:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: var(--tag-hover-bg);
 }
 
 @media (max-width: 1200px) {
     .container {
-        padding: 15px;
+        padding: var(--media-max-width-1200-padding);
     }
 
     .add-material,
     .materials-list {
-        padding: 20px;
+        padding: var(--media-max-width-1200-padding);
     }
 }
 
 @media (max-width: 768px) {
     h1 {
-        font-size: 2.5rem;
+        font-size: var(--media-max-width-768-h1-font-size);
     }
 
     h2 {
-        font-size: 1.8rem;
+        font-size: var(--media-max-width-768-h2-font-size);
     }
 
     button {
-        font-size: 1.1rem;
+        font-size: var(--media-max-width-768-button-font-size);
     }
 
     input {
-        padding: 10px;
-        font-size: 0.95rem;
+        padding: var(--media-max-width-768-input-padding);
+        font-size: var(--media-max-width-768-input-font-size);
     }
 
     .material-card h3 {
-        font-size: 1.3rem;
+        font-size: var(--media-max-width-768-material-card-h3-font-size);
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 2rem;
+        font-size: var(--media-max-width-480-h1-font-size);
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: var(--media-max-width-480-h2-font-size);
     }
 
     .add-material,
     .materials-list {
-        padding: 15px;
+        padding: var(--media-max-width-480-padding);
     }
 
     button {
-        padding: 12px;
+        padding: var(--media-max-width-480-button-padding);
     }
 
     input {
-        padding: 8px;
-        font-size: 0.85rem;
+        padding: var(--media-max-width-480-input-padding);
+        font-size: var(--media-max-width-480-input-font-size);
     }
 
     .material-card h3 {
-        font-size: 1.2rem;
+        font-size: var(--media-max-width-480-material-card-h3-font-size);
     }
 
     .material-card p {
-        font-size: 0.9rem;
+        font-size: var(--media-max-width-480-material-card-p-font-size);
     }
 }
 
 .button-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
-    padding-top: 20px;
+    margin-bottom: var(--button-container-margin-bottom);
+    padding-top: var(--button-container-padding-top);
 }
 
-.toggleTheme{
+.toggleTheme {
     display: block;
-    width: 50%;
-    padding: 15px;
+    width: var(--toggle-theme-width);
+    padding: var(--button-padding);
     border: none;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #fff;
-    background-image: linear-gradient(45deg, #FF6B6B, #F0E68C);
+    border-radius: var(--button-border-radius);
+    font-size: var(--button-font-size);
+    font-weight: var(--button-font-weight);
+    color: var(--heading-color);
+    background-image: var(--button-bg-gradient);
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+    box-shadow: var(--button-box-shadow);
 }
 
 .toggleTheme.dark-mode {
-    background-color: #666;
-    color: #f5f5f5;
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-color);
 }
 
 .toggleTheme:hover {
-    background-color: #45a049;
+    background-color: var(--toggle-theme-bg-hover);
 }
 
 button.dark-mode {
-    background-color: #666;
-    color: #f5f5f5;
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-color);
 }
