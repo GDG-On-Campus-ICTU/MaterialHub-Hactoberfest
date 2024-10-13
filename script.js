@@ -1,3 +1,5 @@
+
+
 class TechMaterialsApp {
     constructor() {
         this.materials = [];
@@ -16,18 +18,28 @@ class TechMaterialsApp {
         }
     }
 
+ 
     async loadMaterials() {
         try {
+            // Fetch data from 'data.json'
             const response = await fetch('data.json');
-            if (!response.ok) throw new Error('Failed to load materials');
-            this.materials = await response.json();
-
+            if (!response.ok) throw new Error('Failed to load materials from data.json');
+            const fileMaterials = await response.json();
+    
+            // Fetch data from localStorage
+            const localStorageMaterials = JSON.parse(localStorage.getItem('materials')) || [];
+    
+            // Merge materials from 'data.json' and localStorage
+            this.materials = [...fileMaterials, ...localStorageMaterials];
+    
             console.log(this.materials);
         } catch (error) {
             console.error('Error loading materials:', error);
             throw new Error('Error loading materials: ' + error.message);
         }
     }
+    
+
 
     setupEventListeners() {
         // Form submission
@@ -65,10 +77,24 @@ class TechMaterialsApp {
         this.resetForm();
     }
 
+
     addMaterial(material) {
-        this.materials.push(material);
+        // Retrieve the existing materials array from local storage or initialize it as an empty array
+        let storedMaterials = JSON.parse(localStorage.getItem('materials')) || [];
+    
+        // Add the new material to the materials array
+        storedMaterials.push(material);
+    
+        // Save the updated materials array back to local storage
+        localStorage.setItem('materials', JSON.stringify(storedMaterials));
+    
+        // Update the local state if needed (e.g., for rendering purposes)
+        this.materials = storedMaterials;
         this.renderMaterials();
+        console.log(material);
     }
+    
+    
 
     resetForm() {
         document.getElementById('materialForm').reset();
@@ -82,15 +108,33 @@ class TechMaterialsApp {
         this.renderMaterials(filteredMaterials);
     }
 
-    renderMaterials(materialsToRender = this.materials) {
-        const container = document.getElementById('materialsList');
-        container.innerHTML = '';
-
-        materialsToRender.forEach(material => {
-            const card = this.createMaterialCard(material);
-            container.appendChild(card);
-        });
+    async renderMaterials() {
+        try {
+            // Fetch data from 'data.json'
+            const response = await fetch('data.json');
+            if (!response.ok) throw new Error('Failed to load materials from data.json');
+            const fileMaterials = await response.json();
+    
+            // Fetch data from localStorage
+            const localStorageMaterials = JSON.parse(localStorage.getItem('materials')) || [];
+    
+            // Merge materials from 'data.json' and localStorage
+            const combinedMaterials = [...fileMaterials, ...localStorageMaterials];
+    
+            // Now render the combined materials
+            const container = document.getElementById('materialsList');
+            container.innerHTML = '';
+    
+            combinedMaterials.forEach(material => {
+                const card = this.createMaterialCard(material);
+                container.appendChild(card);
+            });
+    
+        } catch (error) {
+            console.error('Error rendering materials:', error);
+        }
     }
+    
 
     createMaterialCard(material) {
         const card = document.createElement('div');
