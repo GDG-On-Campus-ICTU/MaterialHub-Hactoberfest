@@ -9,10 +9,15 @@ class TechMaterialsApp {
 
     async init() {
         try {
+            const storedDarkMode = localStorage.getItem('darkMode');
+            if (storedDarkMode === 'true') {
+                this.isDarkMode = true;
+                this.updateTheme();
+            }
             await this.loadMaterials();
             this.setupEventListeners();
             this.renderMaterials();
-            this.updateTheme(); 
+            this.updateTheme();
         } catch (error) {
             this.showError('Failed to initialize the application');
         }
@@ -55,15 +60,15 @@ class TechMaterialsApp {
 
         // Theme toggle button
         const toggleButton = document.getElementById('toggleTheme');
-            toggleButton.addEventListener('click', () => {
-                this.toggleTheme();
-            });
+        toggleButton.addEventListener('click', () => {
+            this.toggleTheme();
+        });
     }
 
     handleFormSubmission() {
-        const contributor = document.getElementById('contributor').value;
-        const resourceName = document.getElementById('resourceName').value;
-        const link = document.getElementById('link').value;
+        const contributor = this.escapeHtml(document.getElementById('contributor').value);
+        const resourceName = this.escapeHtml(document.getElementById('resourceName').value);
+        const link = this.escapeHtml(document.getElementById('link').value);
         const tags = document.getElementById('tags').value;
 
         const newMaterial = {
@@ -161,6 +166,11 @@ class TechMaterialsApp {
             .replace(/'/g, "&#039;");
     }
 
+    //in cases where escapeHtml is used for href attributes
+    escapeHtmlAttribute(unsafe){
+        return unsafe.replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    } // now links can be used like this::: <a href="${this.escapeHtmlAttribute(material.link)}" target="_blank">${this.escapeHtml(material.link)}</a>
+
     showError(message) {
         console.error(message);
         // You could implement a more user-friendly error display here
@@ -169,26 +179,28 @@ class TechMaterialsApp {
     toggleTheme() {
         this.isDarkMode = !this.isDarkMode;
         this.updateTheme();
+        localStorage.setItem('darkMode', this.isDarkMode);
     }
 
     updateTheme() {
         const body = document.body;
         const addMaterialSection = document.querySelector('.add-material');
         const materialCards = document.querySelectorAll('.material-card');
-        const header = document.querySelector('h1'); // Select the header
-        const labels = document.querySelectorAll('label'); // Select all labelsed
+        const header = document.querySelector('h1');
+        const labels = document.querySelectorAll('label');
+
         if (this.isDarkMode) {
             body.classList.add('dark-mode');
             addMaterialSection.classList.add('dark-mode');
             materialCards.forEach(card => card.classList.add('dark-mode'));
-            header.classList.add('dark-mode'); // Add dark-mode class to header
-            labels.forEach(label => label.classList.add('dark-mode')); // Add dark-mode class to all labels
+            header.classList.add(' dark-mode');
+            labels.forEach(label => label.classList.add('dark-mode'));
         } else {
             body.classList.remove('dark-mode');
             addMaterialSection.classList.remove('dark-mode');
             materialCards.forEach(card => card.classList.remove('dark-mode'));
-            header.classList.remove('dark-mode'); // Remove dark-mode class from header
-            labels.forEach(label => label.classList.remove('dark-mode')); // Remove dark-mode class from all labels
+            header.classList.remove('dark-mode');
+            labels.forEach(label => label.classList.remove('dark-mode'));
         }
     }
 }
