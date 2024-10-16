@@ -16,5 +16,11 @@
         "resourceName": "React Native ",
         "link": "https://flutter.dev/",
         "tags": ["React native ", "mobile development", "cross platform"]
+    },
+     {
+        "contributor": "Guegouo M. Guiddel",
+        "resourceName": "Hacktoberfest ",
+        "link": "https://hacktoberfest.com/",
+        "tags": ["open source contribution ", "hacktobest", "reward"]
     }
 ]
