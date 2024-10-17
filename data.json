@@ -34,5 +34,10 @@
         "resourceName": "Hacktoberfest ",
         "link": "https://hacktoberfest.com/",
         "tags": ["open source contribution ", "hacktobest", "reward"]
-    }
+    },
+        "contributor": "Guegouo M. Guiddel",
+        "resourceName": "Hacktoberfest Official Guide",
+        "link": "https://hacktoberfest.com/resources/",
+        "tags": ["open source", "contribution guide", "DigitalOcean"]
+    },
 ]
