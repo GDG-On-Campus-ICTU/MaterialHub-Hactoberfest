@@ -46,5 +46,11 @@
         "resourceName": "How to Contribute to Hacktoberfest",
         "link": "https://hacktoberfest.digitalocean.com/blog/",
         "tags": ["how to contribute", "open source", "tips and tricks"]
-    }
+    },
+    {
+        "contributor": "Guegouo M. Guiddel",
+        "resourceName": "Hacktoberfest 2024",
+        "link": "https://dev.to/t/hacktoberfest",
+        "tags": ["developer community", "blog", "Hacktoberfest updates"]
+    },
 ]
