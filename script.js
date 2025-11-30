@@ -1,10 +1,12 @@
 
 
+import { collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
 class TechMaterialsApp {
     constructor() {
         this.materials = [];
         this.isDarkMode = false;
-        this.db = firebase.firestore();
+        this.db = window.db;
         this.init();
     }
 
@@ -25,7 +27,7 @@ class TechMaterialsApp {
 
     async loadMaterials() {
         try {
-            const snapshot = await this.db.collection('materials').get();
+            const snapshot = await getDocs(collection(this.db, 'materials'));
             this.materials = snapshot.docs.map(doc => doc.data());
             this.renderMaterials(this.materials);
         } catch (error) {
@@ -72,7 +74,7 @@ class TechMaterialsApp {
 
     async addMaterial(material) {
         try {
-            await this.db.collection('materials').add(material);
+            await addDoc(collection(this.db, 'materials'), material);
             this.loadMaterials();
         } catch (error) {
             this.showError('Failed to add material');
