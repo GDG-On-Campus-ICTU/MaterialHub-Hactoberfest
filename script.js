@@ -107,12 +107,17 @@ class TechMaterialsApp {
         const card = document.createElement('div');
         card.className = 'material-card';
 
+        const resourceName = material.resourceName || 'No Title';
+        const contributor = material.contributor || 'Anonymous';
+        const link = material.link || '#';
+        const tags = Array.isArray(material.tags) ? material.tags : [];
+
         card.innerHTML = `
-            <h3>${this.escapeHtml(material.resourceName)}</h3>
-            <p><strong>Contributor:</strong> ${this.escapeHtml(material.contributor)}</p>
-            <p><strong>Link:</strong> <a href="${this.escapeHtml(material.link)}" target="_blank">${this.escapeHtml(material.link)}</a></p>
+            <h3>${this.escapeHtml(resourceName)}</h3>
+            <p><strong>Contributor:</strong> ${this.escapeHtml(contributor)}</p>
+            <p><strong>Link:</strong> <a href="${this.escapeHtml(link)}" target="_blank">${this.escapeHtml(link)}</a></p>
             <div class="tags">
-                ${material.tags.map(tag => `<span class="tag">${this.escapeHtml(tag)}</span>`).join('')}
+                ${tags.map(tag => `<span class="tag">${this.escapeHtml(tag)}</span>`).join('')}
             </div>
         `;
 
@@ -120,6 +125,9 @@ class TechMaterialsApp {
     }
 
     escapeHtml(unsafe) {
+        if (typeof unsafe !== 'string') {
+            return '';
+        }
         return unsafe
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
