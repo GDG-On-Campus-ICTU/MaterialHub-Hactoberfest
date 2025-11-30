@@ -101,6 +101,8 @@ class TechMaterialsApp {
             const card = this.createMaterialCard(material);
             container.appendChild(card);
         });
+
+        this.updateTheme();
     }
 
     createMaterialCard(material) {
