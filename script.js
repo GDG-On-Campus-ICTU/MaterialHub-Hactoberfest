@@ -1,12 +1,9 @@
 
 
-import { collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-
 class TechMaterialsApp {
     constructor() {
         this.materials = [];
         this.isDarkMode = false;
-        this.db = window.db;
         this.init();
     }
 
@@ -19,22 +16,35 @@ class TechMaterialsApp {
             }
             await this.loadMaterials();
             this.setupEventListeners();
+            this.renderMaterials();
             this.updateTheme();
         } catch (error) {
             this.showError('Failed to initialize the application');
         }
     }
 
+ 
     async loadMaterials() {
         try {
-            const snapshot = await getDocs(collection(this.db, 'materials'));
-            this.materials = snapshot.docs.map(doc => doc.data());
-            this.renderMaterials(this.materials);
+            // Fetch data from 'data.json'
+            const response = await fetch('data.json');
+            if (!response.ok) throw new Error('Failed to load materials from data.json');
+            const fileMaterials = await response.json();
+    
+            // Fetch data from localStorage
+            const localStorageMaterials = JSON.parse(localStorage.getItem('materials')) || [];
+    
+            // Merge materials from 'data.json' and localStorage
+            this.materials = [...fileMaterials, ...localStorageMaterials];
+    
+            console.log(this.materials);
         } catch (error) {
             console.error('Error loading materials:', error);
             throw new Error('Error loading materials: ' + error.message);
         }
     }
+    
+
 
     setupEventListeners() {
         // Form submission
@@ -72,14 +82,24 @@ class TechMaterialsApp {
         this.resetForm();
     }
 
-    async addMaterial(material) {
-        try {
-            await addDoc(collection(this.db, 'materials'), material);
-            this.loadMaterials();
-        } catch (error) {
-            this.showError('Failed to add material');
-        }
+
+    addMaterial(material) {
+        // Retrieve the existing materials array from local storage or initialize it as an empty array
+        let storedMaterials = JSON.parse(localStorage.getItem('materials')) || [];
+    
+        // Add the new material to the materials array
+        storedMaterials.push(material);
+    
+        // Save the updated materials array back to local storage
+        localStorage.setItem('materials', JSON.stringify(storedMaterials));
+    
+        // Update the local state if needed (e.g., for rendering purposes)
+        this.materials = storedMaterials;
+        this.renderMaterials();
+        console.log(material);
     }
+    
+    
 
     resetForm() {
         document.getElementById('materialForm').reset();
@@ -93,33 +113,44 @@ class TechMaterialsApp {
         this.renderMaterials(filteredMaterials);
     }
 
-    renderMaterials(materials) {
-        const container = document.getElementById('materialsList');
-        container.innerHTML = '';
-
-        materials.forEach(material => {
-            const card = this.createMaterialCard(material);
-            container.appendChild(card);
-        });
-
-        this.updateTheme();
+    async renderMaterials() {
+        try {
+            // Fetch data from 'data.json'
+            const response = await fetch('data.json');
+            if (!response.ok) throw new Error('Failed to load materials from data.json');
+            const fileMaterials = await response.json();
+    
+            // Fetch data from localStorage
+            const localStorageMaterials = JSON.parse(localStorage.getItem('materials')) || [];
+    
+            // Merge materials from 'data.json' and localStorage
+            const combinedMaterials = [...fileMaterials, ...localStorageMaterials];
+    
+            // Now render the combined materials
+            const container = document.getElementById('materialsList');
+            container.innerHTML = '';
+    
+            combinedMaterials.forEach(material => {
+                const card = this.createMaterialCard(material);
+                container.appendChild(card);
+            });
+    
+        } catch (error) {
+            console.error('Error rendering materials:', error);
+        }
     }
+    
 
     createMaterialCard(material) {
         const card = document.createElement('div');
         card.className = 'material-card';
 
-        const resourceName = material.resourceName || 'No Title';
-        const contributor = material.contributor || 'Anonymous';
-        const link = material.link || '#';
-        const tags = Array.isArray(material.tags) ? material.tags : [];
-
         card.innerHTML = `
-            <h3>${this.escapeHtml(resourceName)}</h3>
-            <p><strong>Contributor:</strong> ${this.escapeHtml(contributor)}</p>
-            <p><strong>Link:</strong> <a href="${this.escapeHtml(link)}" target="_blank">${this.escapeHtml(link)}</a></p>
+            <h3>${this.escapeHtml(material.resourceName)}</h3>
+            <p><strong>Contributor:</strong> ${this.escapeHtml(material.contributor)}</p>
+            <p><strong>Link:</strong> <a href="${this.escapeHtml(material.link)}" target="_blank">${this.escapeHtml(material.link)}</a></p>
             <div class="tags">
-                ${tags.map(tag => `<span class="tag">${this.escapeHtml(tag)}</span>`).join('')}
+                ${material.tags.map(tag => `<span class="tag">${this.escapeHtml(tag)}</span>`).join('')}
             </div>
         `;
 
@@ -127,9 +158,6 @@ class TechMaterialsApp {
     }
 
     escapeHtml(unsafe) {
-        if (typeof unsafe !== 'string') {
-            return '';
-        }
         return unsafe
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
@@ -137,6 +165,11 @@ class TechMaterialsApp {
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
     }
+
+    //in cases where escapeHtml is used for href attributes
+    escapeHtmlAttribute(unsafe){
+        return unsafe.replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    } // now links can be used like this::: <a href="${this.escapeHtmlAttribute(material.link)}" target="_blank">${this.escapeHtml(material.link)}</a>
 
     showError(message) {
         console.error(message);
