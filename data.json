@@ -1,0 +1,56 @@
+[
+    {
+        "contributor": "Nde Dilan",
+        "resourceName": "How a Hacker Saved The Internet",
+        "link": "https://www.youtube.com/watch?v=F7iLfuci75Y",
+        "tags": ["Hacking", "Internet", "Story","History"]
+    },
+    {
+        "contributor": "Nde Dilan, GDG Lead",
+        "resourceName": "AWS Certified Cloud Practitioner Certification Course (CLF-C02) - Pass the Exam!",
+        "link": "https://www.youtube.com/watch?v=NhDYbskXRgc",
+        "tags": ["AWS", "Internet", "Cloud","DevOps"]
+    },
+    {
+        "contributor": "Madick Ange",
+        "resourceName": "React Documentation",
+        "link": "https://reactjs.org",
+        "tags": ["react", "javascript", "framework"]
+    },
+     {
+        "contributor": "Nde Dilan",
+        "resourceName": "Flutter Documentation",
+        "link": "https://flutter.dev/",
+        "tags": ["Flutter", "android", "framework"]
+    },
+      {
+        "contributor": "Guegouo M. Guiddel",
+        "resourceName": "React Native ",
+        "link": "https://https://reactnative.dev/",
+        "tags": ["React native ", "mobile development", "cross platform"]
+    },
+     {
+        "contributor": "Guegouo M. Guiddel",
+        "resourceName": "Hacktoberfest ",
+        "link": "https://hacktoberfest.com/",
+        "tags": ["open source contribution ", "hacktobest", "reward"]
+    },
+    {
+        "contributor": "Guegouo M. Guiddel",
+        "resourceName": "Hacktoberfest Official Guide",
+        "link": "https://hacktoberfest.com/resources/",
+        "tags": ["open source", "contribution guide", "DigitalOcean"]
+    },
+    {
+        "contributor": "Guegouo M. Guiddel",
+        "resourceName": "How to Contribute to Hacktoberfest",
+        "link": "https://hacktoberfest.digitalocean.com/blog/",
+        "tags": ["how to contribute", "open source", "tips and tricks"]
+    },
+    {
+        "contributor": "Guegouo M. Guiddel",
+        "resourceName": "Hacktoberfest 2024",
+        "link": "https://dev.to/t/hacktoberfest",
+        "tags": ["developer community", "blog", "Hacktoberfest updates"]
+    },
+]
